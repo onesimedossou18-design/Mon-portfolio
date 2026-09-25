@@ -9,7 +9,7 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+ 
 /* =========================================================
    VARIABLES DE COULEURS (thème sombre "navy + moutarde")
    Centraliser les couleurs ici permet de changer tout le
@@ -27,10 +27,15 @@
   --card-text: #e6eef8;       /* texte des cartes projets */
   --max-width: 1100px;        /* largeur max du contenu */
 }
-
+ 
 /* =========================================================
    BASE DU DOCUMENT
    ========================================================= */
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+ 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -39,23 +44,25 @@ body {
   line-height: 1.5;
   overflow-x: hidden;        /* évite le scroll horizontal parasite */
   overflow-wrap: break-word; /* évite le débordement des mots longs */
+  width: 100%;
+  max-width: 100vw;
 }
-
+ 
 img {
   max-width: 100%;
   height: auto;
 }
-
+ 
 .page {
   min-height: 100vh;
 }
-
+ 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 1rem;
 }
-
+ 
 /* Titre générique utilisé au-dessus de chaque grande section
    (ex : "À propos de moi") pour garder un style homogène. */
 .section-title {
@@ -64,7 +71,7 @@ img {
   font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
   margin-bottom: 2rem;
 }
-
+ 
 /* =========================================================
    EN-TÊTE / NAVIGATION
    ========================================================= */
@@ -76,16 +83,16 @@ img {
   backdrop-filter: blur(8px); /* effet "verre dépoli" au scroll */
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
-
+ 
 .navbar-brand, .nav-link {
   text-decoration: none;
 }
-
+ 
 .navbar-brand {
-  font-size: 1.5rem;
+  font-size: clamp(1.05rem, 0.85rem + 1vw, 1.5rem);
   letter-spacing: 0.05em;
 }
-
+ 
 /* Petit badge rond "OD" à côté du nom */
 .brand-mark {
   display: inline-flex;
@@ -101,13 +108,13 @@ img {
   box-shadow: 0 12px 24px rgba(245, 158, 11, 0.18);
   border: 2px solid rgba(255, 255, 255, 0.25);
 }
-
+ 
 .brand-text small {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.65);
   display: none;
 }
-
+ 
 .nav-link {
   color: var(--muted) !important;
   transition: color .25s ease, transform .25s ease;
@@ -116,7 +123,19 @@ img {
   color: #fff !important;
   transform: translateY(-1px); /* petit effet de survol */
 }
-
+ 
+.navbar-toggler {
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem;
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25) !important;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23f59e0b' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+ 
 /* =========================================================
    SECTION HERO (bannière d'accueil)
    ========================================================= */
@@ -142,7 +161,7 @@ img {
   max-height: 360px;
   object-fit: cover;
 }
-
+ 
 .btn-warning {
   background: var(--accent);
   border-color: var(--accent);
@@ -153,11 +172,11 @@ img {
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(245, 158, 11, 0.18);
 }
-
+ 
 main {
   padding: 2rem 0;
 }
-
+ 
 /* =========================================================
    SECTION "À PROPOS DE MOI"
    Mise en page : photo + citation à gauche, texte + badges
@@ -173,7 +192,7 @@ main {
   border-radius: 18px;
   box-shadow: 0 12px 40px rgba(2, 6, 23, 0.24);
 }
-
+ 
 /* Colonne photo : on force un cadre bien proportionné
    (comme sur la maquette) plutôt qu'une hauteur "libre"
    qui déforme la mise en page selon la photo utilisée. */
@@ -187,11 +206,12 @@ main {
   border-radius: 16px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, .28);
 }
-
+ 
 /* Citation sous la photo : alignée à gauche, même largeur
    que la photo, avec la petite barre d'accent verticale. */
 .about-quote {
-  max-width: 330px;
+  max-width: 100%;
+  width: 330px;
   border-left: 3px solid var(--accent);
   padding-left: 1rem;
   margin: 1.25rem auto 0;
@@ -200,7 +220,7 @@ main {
   font-size: 0.95rem;
   text-align: left;
 }
-
+ 
 /* Colonne texte */
 .about-text {
   align-self: flex-start;
@@ -215,7 +235,7 @@ main {
 .about-text p + p {
   margin-top: 1rem; /* espace entre les deux paragraphes */
 }
-
+ 
 /* Badges "Développement Web / Sécurité / Disponible" */
 .about-badges {
   margin-top: 1.25rem;
@@ -233,7 +253,7 @@ main {
   border-radius: 999px;
   display: inline-block;
 }
-
+ 
 /* =========================================================
    CARTES PROJETS
    ========================================================= */
@@ -265,11 +285,12 @@ main {
 .card-title {
   color: var(--text);
   font-weight: 600;
+  font-size: clamp(1.05rem, 0.95rem + 0.3vw, 1.25rem);
 }
 .card-text {
   color: var(--text-soft);
 }
-
+ 
 /* Étiquette "Projet finalisé" / "En cours" */
 .project-status {
   display: flex;
@@ -281,7 +302,7 @@ main {
 }
 .project-status--completed { color: #4ade80; } /* vert = terminé */
 .project-status--progress { color: var(--accent); } /* orange = en cours */
-
+ 
 .card .btn-outline-dark {
   transition: transform .25s ease, box-shadow .25s ease;
 }
@@ -289,7 +310,7 @@ main {
   transform: translateY(-2px);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
 }
-
+ 
 /* =========================================================
    SECTION COMPÉTENCES (barres de progression)
    ========================================================= */
@@ -307,16 +328,18 @@ main {
 .skill-row span:last-child {
   font-variant-numeric: tabular-nums; /* chiffres alignés (90%, 5%...) */
 }
-
+ 
 .about h3, .contact h3, .skills h3 {
   color: var(--text);
   margin-top: 0;
 }
-
+ 
 .bg-opacity-5 {
   background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.24);
 }
-
+ 
 /* =========================================================
    SECTION FORMATION
    ========================================================= */
@@ -334,7 +357,7 @@ main {
 .formation .card-text {
   color: var(--text-soft);
 }
-
+ 
 /* =========================================================
    FORMULAIRE DE CONTACT
    ========================================================= */
@@ -352,7 +375,7 @@ main {
   box-shadow: none;
   border-color: rgba(245, 158, 11, 0.4); /* liseré orange au focus */
 }
-
+ 
 /* =========================================================
    PIED DE PAGE
    ========================================================= */
@@ -388,7 +411,7 @@ main {
   border-color: transparent;
   color: #071229;
 }
-
+ 
 /* =========================================================
    SURCHARGES DE CLASSES BOOTSTRAP
    (pour que text-muted / text-white / etc. respectent
@@ -413,13 +436,13 @@ button.btn-outline-light:hover {
   color: #000;
   background: #f59e0b;
 }
-
+ 
 /* Empêche le header sticky de cacher le haut d'une section
    quand on clique sur un lien du menu (ex : #projets). */
 .page section {
   scroll-margin-top: calc(3.5rem + 2rem);
 }
-
+ 
 /* =========================================================
    RESPONSIVE — TABLETTES (≤ 991px)
    ========================================================= */
@@ -467,6 +490,9 @@ button.btn-outline-light:hover {
   .about-card {
     padding: 2rem 1.25rem;
   }
+  .about-card .row {
+    --bs-gutter-x: 1.5rem; /* le g-5 (3rem) est trop large sur tablette : on le réduit */
+  }
   .about-text p {
     font-size: 1rem;
     line-height: 1.7;
@@ -475,7 +501,7 @@ button.btn-outline-light:hover {
     height: 180px;
   }
 }
-
+ 
 /* =========================================================
    RESPONSIVE — MOBILES (≤ 575px)
    ========================================================= */
@@ -507,6 +533,9 @@ button.btn-outline-light:hover {
   .about-card {
     padding: 1.5rem 1rem;
   }
+  .about-card .row {
+    --bs-gutter-x: 1rem;
+  }
   .about-quote {
     max-width: 220px;
   }
@@ -520,7 +549,7 @@ button.btn-outline-light:hover {
   .about-text p + p {
     margin-top: .85rem;
   }
-  .hero .btn, .contact .btn {
+  .hero .btn, .contact .btn, .card-body .btn {
     width: 100%;
     justify-content: center;
   }
@@ -548,12 +577,27 @@ button.btn-outline-light:hover {
     font-size: .85rem;
   }
 }
-
+ 
 /* =========================================================
    RESPONSIVE — GRANDS ÉCRANS (≥ 900px)
    ========================================================= */
 @media (min-width: 900px) {
   .hero {
     padding: 6rem 0;
+  }
+}
+ 
+/* =========================================================
+   ACCESSIBILITÉ — respecte les préférences système qui
+   demandent de réduire les animations (même logique que
+   sur le site de référence).
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
