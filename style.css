@@ -166,6 +166,13 @@ main {
 .about {
   padding: 3rem 0;
 }
+.about-card {
+  padding: 2.5rem 2rem;
+  background: var(--panel);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.24);
+}
 
 /* Colonne photo : on force un cadre bien proportionné
    (comme sur la maquette) plutôt qu'une hauteur "libre"
@@ -455,6 +462,14 @@ button.btn-outline-light:hover {
   .about-text {
     margin-top: 0;
     padding: 0;
+    text-align: left;
+  }
+  .about-card {
+    padding: 2rem 1.25rem;
+  }
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
   }
   .card img {
     height: 180px;
@@ -489,8 +504,21 @@ button.btn-outline-light:hover {
   .about-photo {
     max-width: 220px;
   }
+  .about-card {
+    padding: 1.5rem 1rem;
+  }
   .about-quote {
     max-width: 220px;
+  }
+  .about-text {
+    font-size: .95rem;
+  }
+  .about-text p {
+    font-size: .95rem;
+    line-height: 1.65;
+  }
+  .about-text p + p {
+    margin-top: .85rem;
   }
   .hero .btn, .contact .btn {
     width: 100%;
